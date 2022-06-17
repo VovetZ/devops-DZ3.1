@@ -15,7 +15,8 @@
     unzip vagrant_2.2.19_linux_amd64.zip
 
 ## 3. В вашем основном окружении подготовьте удобный для дальнейшей работы терминал. 
-Буду использовать стандартные средства Ubunu 22.04
+    
+    Буду использовать стандартные средства Ubunu 22.04
 
 ## 4. С помощью базового файла конфигурации запустите Ubuntu 20.04 в VirtualBox посредством Vagrant:
 
@@ -29,64 +30,65 @@
 
 vagrant suspend выключит виртуальную машину с сохранением ее состояния (т.е., при следующем vagrant up будут запущены все процессы внутри, которые работали на момент вызова suspend), vagrant halt выключит виртуальную машину штатным образом.
         
-Пришлось вручную скачать образ и добавить его в локально доступные 
-> ./vagrant box add bentoo/ubuntu-20.04 bentoo_ubuntu_20.04
-> 
-> ==> box: Box file was not detected as metadata. Adding it directly...
-> ==> box: Adding box 'bentoo/ubuntu-20.04' (v0) for provider: 
->    box: Unpacking necessary files from: file:///home/vk/vag/bentoo_ubuntu_20.04
-> ==> box: Successfully added box 'bentoo/ubuntu-20.04' (v0) for 'virtualbox'!
+    Пришлось вручную скачать образ и добавить его в локально доступные 
+    ./vagrant box add bentoo/ubuntu-20.04 bentoo_ubuntu_20.04
 
+    box: Box file was not detected as metadata. Adding it directly...
+    box: Adding box 'bentoo/ubuntu-20.04' (v0) for provider: 
+    box: Unpacking necessary files from: file:///home/vk/vag/bentoo_ubuntu_20.04
+    box: Successfully added box 'bentoo/ubuntu-20.04' (v0) for 'virtualbox'!
 
   ## 5.Ознакомьтесь с графическим интерфейсом VirtualBox, посмотрите как выглядит виртуальная машина, которую создал для вас Vagrant, какие аппаратные ресурсы ей выделены. Какие ресурсы выделены по-умолчанию?
-Создана VM с именем vagrant_default_1655497403769_26222
-Base memory  - 1 GB 
-2 CPU
-Virtual disk 64 GB (Actual Size 1,98 Gb) /home/vk/VirtualBox VMs/vagrant_default_1655497403769_26222/ubuntu-20.04-amd64-disk001.vmdk
-Network NAT
+
+    Создана VM с именем vagrant_default_1655497403769_26222
+    Base memory  - 1 GB 
+    2 CPU
+    Virtual disk 64 GB (Actual Size 1,98 Gb) /home/vk/VirtualBox VMs/vagrant_default_1655497403769_26222/ubuntu-20.04-amd64-disk001.vmdk
+    Network NAT
 
  ## 6.Ознакомьтесь с возможностями конфигурации VirtualBox через Vagrantfile: документация. Как добавить оперативной памяти или ресурсов процессора виртуальной машине?
-config.vm.provider "virtualbox" do |v|
-  v.memory = 2048
-  v.cpus = 4
-end
+
+    config.vm.provider "virtualbox" do |v|
+      v.memory = 2048
+      v.cpus = 4
+    end
 
 ## 7.Команда vagrant ssh из директории, в которой содержится Vagrantfile, позволит вам оказаться внутри виртуальной машины без каких-либо дополнительных настроек. Попрактикуйтесь в выполнении обсуждаемых команд в терминале Ubuntu.
-~/vag/vagrant ssh
-Welcome to Ubuntu 20.04.3 LTS (GNU/Linux 5.4.0-91-generic x86_64)
-
- * Documentation:  https://help.ubuntu.com
- * Management:     https://landscape.canonical.com
- * Support:        https://ubuntu.com/advantage
-
-  System information as of Fri 17 Jun 2022 09:05:17 PM UTC
-
-  System load:  0.01               Processes:             122
-  Usage of /:   11.6% of 30.88GB   Users logged in:       0
-  Memory usage: 18%                IPv4 address for eth0: 10.0.2.15
-  Swap usage:   0%
-
-
-This system is built by the Bento project by Chef Software
-More information can be found at https://github.com/chef/bento
+    ~/vag/vagrant ssh
+    Welcome to Ubuntu 20.04.3 LTS (GNU/Linux 5.4.0-91-generic x86_64)
+    
+    * Documentation:  https://help.ubuntu.com
+     * Management:     https://landscape.canonical.com
+    * Support:        https://ubuntu.com/advantage
+    
+     System information as of Fri 17 Jun 2022 09:05:17 PM UTC
+    
+     System load:  0.01               Processes:             122
+    Usage of /:   11.6% of 30.88GB   Users logged in:       0
+    Memory usage: 18%                IPv4 address for eth0: 10.0.2.15
+    Swap usage:   0%
+    
+    
+    This system is built by the Bento project by Chef Software
+    More information can be found at https://github.com/chef/bento
 
 ## 8.Ознакомиться с разделами man bash, почитать о настройках самого bash:
 
-        какой переменной можно задать длину журнала history, и на какой строчке manual это описывается?
+какой переменной можно задать длину журнала history, и на какой строчке manual это описывается?
         
-        >Переменная HISTSIZE, по умолчанию 500. Manual page bash(1) line 862/4548
+    Переменная HISTSIZE, по умолчанию 500. Manual page bash(1) line 862/4548
+     
+что делает директива ignoreboth в bash?
         
-        что делает директива ignoreboth в bash?##
-        
-        >
+    
 
 ## 9. В каких сценариях использования применимы скобки {} и на какой строчке man bash это описано?
 
-    ##10.С учётом ответа на предыдущий вопрос, как создать однократным вызовом touch 100000 файлов? Получится ли аналогичным образом создать 300000? Если нет, то почему?##
+## 10.С учётом ответа на предыдущий вопрос, как создать однократным вызовом touch 100000 файлов? Получится ли аналогичным образом создать 300000? Если нет, то почему?
 
-    ##11.В man bash поищите по /\[\[. Что делает конструкция [[ -d /tmp ]] ##
+## 11.В man bash поищите по /\[\[. Что делает конструкция [[ -d /tmp ]] 
 
-    ##12.Основываясь на знаниях о просмотре текущих (например, PATH) и установке новых переменных; командах, которые мы рассматривали, добейтесь в выводе type -a bash в виртуальной машине наличия первым пунктом в списке:
+## 12.Основываясь на знаниях о просмотре текущих (например, PATH) и установке новых переменных; командах, которые мы рассматривали, добейтесь в выводе type -a bash в виртуальной машине наличия первым пунктом в списке:
 
     bash is /tmp/new_path_directory/bash
     bash is /usr/local/bin/bash
