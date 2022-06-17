@@ -76,18 +76,53 @@ vagrant suspend выключит виртуальную машину с сохр
 
 какой переменной можно задать длину журнала history, и на какой строчке manual это описывается?
         
-    Переменная HISTSIZE, по умолчанию 500. Manual page bash(1) line 862/4548
+    Переменная HISTSIZE, по умолчанию 500. 
+    Manual page bash(1) line 862/4548
      
 что делает директива ignoreboth в bash?
-        
+
+    ignorespace - строки, начинающиеся с пробела, не сохраняются в истории
+    ignoredups - строки, соответствующие предыдущей записи истории, не сохраняются
+    ignoreboth является сочетанием ignorespace и ignoredups
+    Manual page bash(1) line 837/4548     
+    
     
 
 ## 9. В каких сценариях использования применимы скобки {} и на какой строчке man bash это описано?
+    
+       { list; }
+              list is simply executed in the current shell environment.  list must be terminated with  a  newline  or
+              semicolon.  This is known as a group command.  The return status is the exit status of list.  Note that
+              unlike the metacharacters ( and ), { and } are reserved words and must occur where a reserved  word  is
+              permitted  to be recognized.  Since they do not cause a word break, they must be separated from list by
+              whitespace or another shell metacharacter.
+
+    Manual page bash(1) line 257 
 
 ## 10.С учётом ответа на предыдущий вопрос, как создать однократным вызовом touch 100000 файлов? Получится ли аналогичным образом создать 300000? Если нет, то почему?
 
+    touch {00000..99999}.txt - успешно создается
+    но 
+    touch {000000..299999}.txt
+    -bash: /usr/bin/touch: Argument list too long
+    
+    Это ограничение ядра на максимальную длину командной строки в байтах
+    Можно прверить текущее значение
+    
+    vagrant@vagrant:~/ttt$ getconf ARG_MAX
+    2097152
+
+    
+
 ## 11.В man bash поищите по /\[\[. Что делает конструкция [[ -d /tmp ]] 
 
+    [[ expression ]]
+              Return a status of 0 or 1 depending on the evaluation of the conditional  expression  expression. 
+    [[ выражение ]]
+               Возвращает статус 0 или 1 в зависимости от оценки выражения условного выражения.         
+    
+    
+    
 ## 12.Основываясь на знаниях о просмотре текущих (например, PATH) и установке новых переменных; командах, которые мы рассматривали, добейтесь в выводе type -a bash в виртуальной машине наличия первым пунктом в списке:
 
     bash is /tmp/new_path_directory/bash
@@ -96,6 +131,6 @@ vagrant suspend выключит виртуальную машину с сохр
 
     (прочие строки могут отличаться содержимым и порядком) В качестве ответа приведите команды, которые позволили вам добиться указанного вывода или соответствующие скриншоты.##
 
-    ##13. Чем отличается планирование команд с помощью batch и at?##
+## 13. Чем отличается планирование команд с помощью batch и at?##
 
-    ##14. Завершите работу виртуальной машины чтобы не расходовать ресурсы компьютера и/или батарею ноутбука.##
+## 14. Завершите работу виртуальной машины чтобы не расходовать ресурсы компьютера и/или батарею ноутбука.##
