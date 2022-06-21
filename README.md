@@ -137,6 +137,18 @@ vagrant suspend выключит виртуальную машину с сохр
         echo "This dir exists on your filesystem."
     fi
     
+Исправление
+Если католог существует - вернет 0, иначе - 1
+
+    vk@vk-desktop:~/vagrant$ [[ -d /tmp ]]; echo $?
+    0
+    vk@vk-desktop:~/vagrant$ [[ -d /tmp_not_exist ]]; echo $?
+     1
+
+Обычно в скриптах без двойных "[" использовал, например
+    
+    [ -d "/path/to/dir" ] && echo "Directory /path/to/dir exists."
+    
 ## 12.Основываясь на знаниях о просмотре текущих (например, PATH) и установке новых переменных; командах, которые мы рассматривали, добейтесь в выводе type -a bash в виртуальной машине наличия первым пунктом в списке:
 
     bash is /tmp/new_path_directory/bash
